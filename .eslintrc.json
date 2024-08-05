@@ -1,3 +1,18 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        // Import group 사이에 개행 항상 추가
+        "newlines-between": "always",
+        "alphabetize": {
+          // Import 순서는 알파벳 오름차순으로 정렬
+          "order": "asc",
+          // 대소문자 구분 여부 x
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
 }
