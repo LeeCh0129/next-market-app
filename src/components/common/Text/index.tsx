@@ -1,3 +1,5 @@
+import classNames from 'classnames'
+
 interface Props extends React.ComponentPropsWithoutRef<'span'> {
   /**
    * 텍스트의 크기를 설정합니다. (기본값: md)
@@ -13,6 +15,9 @@ interface Props extends React.ComponentPropsWithoutRef<'span'> {
   weight?: 'light' | 'normal' | 'bold'
 }
 
+/**
+ * 일반적인 텍스트를 표시하기 위한 컴포넌트
+ */
 export default function Text({
   size = 'md',
   color = 'black',
@@ -21,46 +26,30 @@ export default function Text({
 }: Props) {
   return (
     <span
-      className={`${
-        size === '4xl'
-          ? 'text-4xl'
-          : size === '3xl'
-            ? 'text-3xl'
-            : size === '2xl'
-              ? 'text-2xl'
-              : size === 'xl'
-                ? 'text-xl'
-                : size === 'lg'
-                  ? 'text-lg'
-                  : size === 'md'
-                    ? 'text-base'
-                    : size === 'sm'
-                      ? 'text-sm'
-                      : size === 'xs'
-                        ? 'text-xs'
-                        : ''
-      }
-      ${
-        color === 'black'
-          ? 'text-black'
-          : color === 'gray'
-            ? 'text-zinc-400'
-            : color === 'red'
-              ? 'text-red-500'
-              : color === 'white'
-                ? 'text-white'
-                : ''
-      }
-      ${
-        weight === 'light'
-          ? 'font-light'
-          : weight === 'normal'
-            ? 'font-normal'
-            : weight === 'bold'
-              ? 'font-bold'
-              : ''
-      }
-  `}
+      className={classNames(
+        props.className,
+        {
+          'text-4xl': size === '4xl',
+          'text-3xl': size === '3xl',
+          'text-2xl': size === '2xl',
+          'text-xl': size === 'xl',
+          'text-lg': size === 'lg',
+          'text-base': size === 'md',
+          'text-sm': size === 'sm',
+          'text-xs': size === 'xs',
+        },
+        {
+          'text-black': color === 'black',
+          'text-zinc-400': color === 'gray',
+          'text-red-500': color === 'red',
+          'text-white': color === 'white',
+        },
+        {
+          'font-light': weight === 'light',
+          'font-normal': weight === 'normal',
+          'font-bold': weight === 'bold',
+        },
+      )}
       {...props}
     />
   )

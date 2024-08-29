@@ -9,15 +9,23 @@ const meta = {
   args: {
     children: 'Hello World!',
   },
-} satisfies Meta
+} satisfies Meta<typeof Text>
 
 export default meta
-type Story = StoryObj
+type Story = StoryObj<typeof meta>
 
 export const DefaultText: Story = {
-  args: {
-    size: 'md',
-    color: 'black',
-    weight: 'normal',
-  },
+  args: {},
+}
+
+export const SizedText: Story = {
+  args: { size: '4xl' },
+}
+
+export const ColoredText: Story = {
+  args: { color: 'red' },
+}
+
+export const WeightedText: Story = {
+  args: { weight: 'bold' },
 }
