@@ -26,6 +26,7 @@ export default function Text({
 }: Props) {
   return (
     <span
+      {...props}
       className={classNames(
         props.className,
         {
@@ -50,7 +51,6 @@ export default function Text({
           'font-bold': weight === 'bold',
         },
       )}
-      {...props}
     />
   )
 }
